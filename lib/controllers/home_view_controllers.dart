@@ -1,9 +1,16 @@
+import 'dart:js';
 import 'dart:math';
 
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:topjoy/constants.dart' as constants;
 
 class HomwViewController extends GetxController{
+  BuildContext context;
+  HomwViewController(this.context);
+
+  bool isInitialized = false;
+
   int bottlecapState = 0;
   int random=0;
   String giveMeMessage() {
@@ -21,5 +28,18 @@ class HomwViewController extends GetxController{
      await  Future.delayed(Duration(milliseconds: 15));
       update();
     }
+  }
+  Future<void> preloadAllImages() async{
+    for(int i=0;i<11;i++) {
+      await precacheImage(AssetImage('images/bottlecap_$i.png'), context);
+    }
+  }
+
+  void onInit() async {
+    super.onInit();
+    await preloadAllImages();
+    isInitialized=true;
+    await Future.delayed(Duration(milliseconds: 2000));
+    update();
   }
 }

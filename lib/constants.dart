@@ -95,4 +95,5 @@ List<String> messages = [
   "NYUGI MÁR BASZOD.",
   "BUZI VAGY? TUDOM HOGY AZ VAGY, DE AZÉRT MEGKÉRDEM.",
   "DE MOST MIÉRT LESZÜNK A LINUX TANÁRRRAL?",
+  ""
 ];

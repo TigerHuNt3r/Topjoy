@@ -1,18 +1,22 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:topjoy/controllers/home_view_controllers.dart';
+import 'package:topjoy/view/loading_view.dart';
 
 class HomwView extends StatelessWidget {
-  HomwViewController controller = Get.put(HomwViewController());
+
 
   @override
   Widget build(BuildContext context) {
+    HomwViewController controller = Get.put(HomwViewController(context));
     return GetBuilder<HomwViewController>(
       init: controller,
       
       builder: (_) {
-        return Scaffold(body: Container(
+        return (!controller.isInitialized)?LoadingView():Scaffold(body: Container(
         child: Center(
           child: GestureDetector(
             onTap:() {
@@ -54,4 +58,7 @@ class HomwView extends StatelessWidget {
       },
     );
   }
+
+ 
 }
+
